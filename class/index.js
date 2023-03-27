@@ -1,3 +1,5 @@
+import ErrorCustom from '../tryCatch/index.js';
+
 // 3 ways to create class
 // 1) Use Function
 // 2) Use Object
@@ -66,5 +68,10 @@ export default function testClass() {
     //3) Singleton Object
     UserSingleton.setInfo('test', 'test');
     result.loginSingleton = UserSingleton.checkLogin();
+    try {
+        !result.loginSingleton ? new ErrorCustom().throwErrorLogin() : '';
+    } catch (error) {
+        console.log(error.message)
+    }
     return result;
 }
